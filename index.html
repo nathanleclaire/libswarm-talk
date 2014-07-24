@@ -1,0 +1,489 @@
+<!doctype html>
+<html lang="en">
+
+	<head>
+		<meta charset="utf-8">
+
+    <title>Introduction to Docker</title>
+
+    <meta name="description" content="A presentation about Docker.">
+		<meta name="author" content="James Turnbull">
+
+		<meta name="apple-mobile-web-app-capable" content="yes" />
+		<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+		<link rel="stylesheet" href="css/reveal.min.css">
+		<link rel="stylesheet" href="css/theme/simple.css" id="theme">
+
+		<!-- For syntax highlighting -->
+		<link rel="stylesheet" href="lib/css/zenburn.css">
+
+		<!-- If the query includes 'print-pdf', use the PDF print sheet -->
+		<script>
+			document.write( '<link rel="stylesheet" href="css/print/' + ( window.location.search.match( /print-pdf/gi ) ? 'pdf' : 'paper' ) + '.css" type="text/css" media="print">' );
+		</script>
+
+		<!--[if lt IE 9]>
+		<script src="lib/js/html5shiv.js"></script>
+		<![endif]-->
+        <style>
+            .tiny {
+                font-size: 20px !important;
+                margin-top: 10px;
+            }
+            #boids {
+                margin-top: 10px;
+            }
+            h1 {
+                margin-bottom: 40px !important;
+            }
+        </style>
+	</head>
+
+	<body>
+
+<div class="reveal">
+
+<!-- Any section element inside of this container is displayed as a slide -->
+<div class="slides">
+<section data-markdown>
+    <script type="text/template">
+        # libswarm
+        <div class="tiny">nathan leclaire - [nathanleclaire.com](http://nathanleclaire.com)</div>
+        <canvas id="boids" height="430" width="830"></canvas>
+        <div class="tiny">credit: [paul boxley](http://www.paulboxley.com/blog/2012/05/boids)</div>
+    </script>
+</section>
+<section data-markdown>
+    <script type="text/template">
+        ## In the beginning...
+
+        ![OG Docker](images/og_docker.png)
+    </script>
+</section>
+<section data-markdown>
+    <script type="text/template">
+        ## Works great on one host.
+    </script>
+</section>
+<section data-markdown>
+    <script type="text/template">
+        ## But...
+
+        ![server farm](images/server_racks.jpg)
+    </script>
+</section>
+<section data-markdown>
+    <script type="text/template">
+        ## What to do?
+    </script>
+</section>
+<section data-markdown>
+    <script type="text/template">
+        ## Community has some ideas...
+    </script>
+</section>
+<section data-markdown>
+    <script type="text/template">
+        ## fleet / etcd
+        ![coreos](images/backends/coreos.jpg)
+    </script>
+</section>
+<section data-markdown>
+    <script type="text/template">
+        ## consul
+        ![consul](images/backends/consul.png)
+    </script>
+</section>
+<section data-markdown>
+    <script type="text/template">
+        ## kubernetes
+        ![kubernetes](images/backends/kubernetes.jpg)
+    </script>
+</section>
+<section data-markdown>
+    <script type="text/template">
+        ## mesos
+        ![mesos](images/backends/mesos.png)
+    </script>
+</section>
+<section data-markdown>
+    <script type="text/template">
+        ## helios
+        ![helios](images/backends/helios.jpg)
+    </script>
+</section>
+<section data-markdown>
+    <script type="text/template">
+        ## centurion
+        ![centurion](images/backends/centurion.gif)
+    </script>
+</section>
+<section data-markdown>
+    <script type="text/template">
+        ## fig
+        ![fig](images/backends/fig.png)
+    </script>
+</section>
+<section data-markdown>
+    <script type="text/template">
+        ## Wow, that's a lot of choices.
+    
+        - Choice == Good
+        - Fragmention == Bad
+        - We want our applications to "Just Work, Everywhere".  If we buy in to one tool, are we stuck with it?
+    </script>
+</section>
+<section data-markdown>
+    <script type="text/template">
+        ## Introducing libswarm
+    
+        ![bees](images/bees.jpg)
+
+        A minimalist toolkit for composing network services.
+
+        > “There are a thousand ways to implement orchestration. But those should be a thousand plugins, exposed to the developer through a unified, elegant interface.”
+    </script>
+</section>
+<section data-markdown>
+    <script type="text/template">
+        ## Examples of what it can do (from README.md on Github)
+    
+        - Aggregate all your Docker containers across multiple hosts and infrastructure providers, as if they were running on a single host
+        - Swap in a new clustering and service discovery system, without changing any application code
+        - Collect logs across an in-house Mesos cluster, a Cloud Foundry deployment, and individual servers staggered in 3 different datacenters, forward them to your legacy syslog deployment, then perform custom analytics on them.
+    </script>
+</section>
+<section data-markdown>
+    <script type="text/template">
+        ## Demo
+    </script>
+</section>
+<section data-markdown>
+    <script type="text/template">
+        ## That's all folks.  Go forth and Dockerize!
+
+        - Github: [github.com/docker/libswarm](https://github.com/docker/libswarm)
+        - Contact me : 
+            - [nathan@docker.com](mailto:nathan@docker.com)
+            - `nathanleclaire` on IRC 
+            - [nathanleclaire](https://github.com/nathanleclaire) on Github
+        - Join us on :
+            - `#docker` on IRC  (Freenode)
+            - `#libswarm` on IRC (Freenode)
+    </script>
+</section>
+</div>
+</div>
+<script src="//cdnjs.cloudflare.com/ajax/libs/underscore.js/1.6.0/underscore-min.js"></script> 
+<script src="lib/js/head.min.js"></script>
+<script src="js/reveal.min.js"></script>
+<script>
+    // Full list of configuration options available here:
+    // https://github.com/hakimel/reveal.js#configuration
+    Reveal.initialize({
+        controls: true,
+        progress: true,
+        history: true,
+        center: true,
+
+        theme: Reveal.getQueryHash().theme, // available themes are in /css/theme
+        transition: Reveal.getQueryHash().transition || 'default', // default/cube/page/concave/zoom/linear/fade/none
+
+        // Optional libraries used to extend on reveal.js
+        dependencies: [
+            { src: 'lib/js/classList.js', condition: function() { return !document.body.classList; } },
+            { src: 'plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+            { src: 'plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+            { src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+            { src: 'plugin/zoom-js/zoom.js', async: true, condition: function() { return !!document.body.classList; } },
+            { src: 'plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } }
+            // { src: 'plugin/search/search.js', async: true, condition: function() { return !!document.body.classList; } }
+            // { src: 'plugin/remotes/remotes.js', async: true, condition: function() { return !!document.body.classList; } }
+        ]
+    });
+</script>
+<script>
+    // boid code
+// Generated by CoffeeScript 1.3.1
+(function() {
+  var Boid, average, average_direction, average_location, boids, canvas, context, direction_of_location, distance_between, initialised, near_to, root, started;
+
+  root = this;
+
+  root.boids_2d_v1 = {};
+
+  boids_2d_v1.number = 30;
+
+  boids_2d_v1.width = 830;
+
+  boids_2d_v1.height = 530;
+
+  boids_2d_v1.wrap_around = 20;
+
+  boids_2d_v1.nearby_dist = 100;
+
+  boids_2d_v1.too_close_dist = 30;
+
+  boids_2d_v1.draw_between_nearby = false;
+
+  boids_2d_v1.draw_debug = false;
+
+  boids_2d_v1.boids_keep_distance = true;
+
+  boids_2d_v1.boids_match_direction = true;
+
+  boids_2d_v1.boids_move_toward_centre = true;
+
+  boids_2d_v1.random_speed = false;
+
+  initialised = false;
+
+  started = false;
+
+  canvas = context = boids = null;
+
+  boids_2d_v1.init = function() {
+    var n;
+    canvas = document.getElementById("boids");
+    context = canvas.getContext("2d");
+    boids_2d_v1.boids = (function() {
+      var _i, _ref, _results;
+      _results = [];
+      for (n = _i = 0, _ref = boids_2d_v1.number; 0 <= _ref ? _i < _ref : _i > _ref; n = 0 <= _ref ? ++_i : --_i) {
+        _results.push(new Boid(n));
+      }
+      return _results;
+    })();
+    boids_2d_v1.draw(context, boids_2d_v1.boids);
+    return initialised = true;
+  };
+
+  boids_2d_v1.start = function() {
+    var frame;
+    if (started) {
+      return false;
+    }
+    started = true;
+    if (!initialised) {
+      boids_2d_v1.init();
+    }
+    frame = function() {
+      _.each(boids_2d_v1.boids, function(b) {
+        var nearby, too_close;
+        nearby = near_to(b, boids_2d_v1.nearby_dist);
+        too_close = near_to(b, boids_2d_v1.too_close_dist);
+        if (boids_2d_v1.boids_match_direction) {
+          b.rotate_towards(average_direction(nearby));
+        }
+        if (boids_2d_v1.boids_keep_distance) {
+          b.rotate_away_from(average_direction(too_close));
+        }
+        if (boids_2d_v1.boids_move_toward_centre) {
+          b.rotate_towards(direction_of_location(b, average_location(b)));
+        }
+        return b.move();
+      });
+      return boids_2d_v1.draw(context, boids_2d_v1.boids);
+    };
+    return this.intervalId = setInterval(frame, 30);
+  };
+
+  boids_2d_v1.stop = function() {
+    clearInterval(this.intervalId);
+    return started = false;
+  };
+
+  boids_2d_v1.reset = function() {
+    boids_2d_v1.stop();
+    return boids_2d_v1.init();
+  };
+
+  boids_2d_v1.draw = function(context, boids) {
+    if (context == null) {
+      context = context;
+    }
+    if (boids == null) {
+      boids = boids_2d_v1.boids;
+    }
+    context.clearRect(0, 0, boids_2d_v1.width, boids_2d_v1.height);
+    if (boids_2d_v1.draw_between_nearby) {
+      _.each(boids, function(b) {
+        return b.draw_nearby_lines(context);
+      });
+    }
+    return _.each(boids, function(b) {
+      return b.draw(context);
+    });
+  };
+
+  boids_2d_v1.toggle = function(property) {
+    if (boids_2d_v1[property]) {
+      boids_2d_v1[property] = false;
+    } else {
+      boids_2d_v1[property] = true;
+    }
+    return boids_2d_v1.draw(context);
+  };
+
+  boids_2d_v1.other_boids = function(target) {
+    return _.reject(boids_2d_v1.boids, function(boid) {
+      return boid.id === target.id;
+    });
+  };
+
+  distance_between = function(a, b) {
+    var dx, dy;
+    dx = Math.abs(a.x - b.x);
+    dy = Math.abs(a.y - b.y);
+    return Math.sqrt(Math.pow(dx, 2) + Math.pow(dy, 2));
+  };
+
+  average = function(array) {
+    return _.reduce(array, (function(memo, element) {
+      return memo + element;
+    }), 0) / array.length;
+  };
+
+  average_direction = function(array) {
+    return average(_.collect(array, function(element) {
+      return element.direction;
+    }));
+  };
+
+  near_to = function(target, distance) {
+    if (distance == null) {
+      distance = boids_2d_v1.nearby_dist;
+    }
+    return _.filter(boids_2d_v1.other_boids(target), function(boid) {
+      return distance_between(target, boid) < distance;
+    });
+  };
+
+  average_location = function(target) {
+    var x, y;
+    x = average(_.collect(boids_2d_v1.other_boids(target), function(boid) {
+      return boid.x;
+    }));
+    y = average(_.collect(boids_2d_v1.other_boids(target), function(boid) {
+      return boid.y;
+    }));
+    return {
+      "x": x,
+      "y": y
+    };
+  };
+
+  direction_of_location = function(entity, target_location) {
+    var x, y;
+    x = Math.abs(entity.x - target_location.x);
+    y = Math.abs(entity.y - target_location.y);
+    return Math.atan2(y, x);
+  };
+
+  Boid = (function() {
+
+    Boid.name = 'Boid';
+
+    function Boid(id) {
+      this.id = id;
+      this.x = Math.random() * boids_2d_v1.width;
+      this.y = Math.random() * boids_2d_v1.height;
+      this.direction = Math.random() * Math.PI * 2;
+      if (boids_2d_v1.random_speed) {
+        this.speed = (Math.random() * 2) + 1;
+      } else {
+        this.speed = 3;
+      }
+      this.rotation_speed = 0.02;
+    }
+
+    Boid.prototype.draw = function(context) {
+      context.save();
+      context.translate(this.x, this.y);
+      if (boids_2d_v1.draw_debug) {
+        context.fillStyle = "darkgray";
+        context.fillText("i: " + this.id, 15, -6);
+        context.fillText("x: " + (Math.round(this.x)), 15, 3);
+        context.fillText("y: " + (Math.round(this.y)), 15, 13);
+      }
+      context.fillStyle = "#019AC6";
+      context.strokeStyle = "#019AC6";
+      context.rotate(this.direction);
+      context.beginPath();
+      context.moveTo(10, 0);
+      context.lineTo(-10, 6);
+      context.lineTo(-6, 0);
+      context.lineTo(-10, -6);
+      context.closePath();
+      context.fill();
+      return context.restore();
+    };
+
+    Boid.prototype.draw_nearby_lines = function(context) {
+      context.save();
+      context.beginPath();
+      _.each(near_to(this), function(boid) {
+        if (!(boid.id > this.id)) {
+          context.strokeStyle = "lawngreen";
+          context.moveTo(this.x, this.y);
+          context.lineTo(boid.x, boid.y);
+          return context.stroke();
+        }
+      }, this);
+      context.closePath();
+      return context.restore();
+    };
+
+    Boid.prototype.move = function() {
+      this.x += Math.cos(this.direction) * this.speed;
+      this.y += Math.sin(this.direction) * this.speed;
+      if (this.x > boids_2d_v1.width + boids_2d_v1.wrap_around) {
+        this.x = -boids_2d_v1.wrap_around;
+      }
+      if (this.y > boids_2d_v1.height + boids_2d_v1.wrap_around) {
+        this.y = -boids_2d_v1.wrap_around;
+      }
+      if (this.x < -boids_2d_v1.wrap_around) {
+        this.x = boids_2d_v1.width + boids_2d_v1.wrap_around;
+      }
+      if (this.y < -boids_2d_v1.wrap_around) {
+        return this.y = boids_2d_v1.height + boids_2d_v1.wrap_around;
+      }
+    };
+
+    Boid.prototype.rotate_towards = function(direction) {
+      var _ref;
+      if (((direction - this.rotation_speed) < (_ref = this.direction) && _ref < (direction + this.rotation_speed))) {
+        return this.direction;
+      } else if (direction > this.direction) {
+        return this.direction += this.rotation_speed / 2.0;
+      } else if (direction < this.direction) {
+        return this.direction -= this.rotation_speed / 2.0;
+      }
+    };
+
+    Boid.prototype.rotate_away_from = function(direction) {
+      if (direction > this.direction) {
+        this.direction -= this.rotation_speed;
+      }
+      if (direction < this.direction) {
+        return this.direction += this.rotation_speed;
+      }
+    };
+
+    Boid.prototype.direction_degrees = function() {
+      return Math.floor(this.direction * 57.2957795);
+    };
+
+    return Boid;
+
+  })();
+
+}).call(this);
+window.setTimeout(boids_2d_v1.start, 500)
+</script>
+</body>
+</html>
