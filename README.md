@@ -1,8 +1,7 @@
-# Introduction to Docker
+# libswarm
 
-Originally for Full stack Meetup
+A Reveal.js presentation on libswarm
 
 ## Author
 
-James Turnbull <james@lovedthanlost.net>
-
+Nathan LeClaire <nathan@docker.com>
